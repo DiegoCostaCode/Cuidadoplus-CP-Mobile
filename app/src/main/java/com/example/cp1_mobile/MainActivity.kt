@@ -47,11 +47,14 @@ class MainActivity : AppCompatActivity() {
             val password = insertPassword?.text.toString()
 
             if (validateCredentials(username, password)) {
-                Toast.makeText(this, "Login bem-sucedido", Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(this, "Usuário ou senha incorretos", Toast.LENGTH_SHORT).show()
+                userCredentials.put(username,password)
+                Toast.makeText(this, "Usuário cadastrado!", Toast.LENGTH_SHORT).show()
             }
         }
+
     }
 
     private fun validateCredentials(username: String, password: String): Boolean {
