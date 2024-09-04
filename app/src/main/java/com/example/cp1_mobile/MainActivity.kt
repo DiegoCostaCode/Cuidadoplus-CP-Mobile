@@ -1,5 +1,6 @@
 package com.example.cp1_mobile
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -39,7 +40,6 @@ class MainActivity : AppCompatActivity() {
 
         //Exemplo de cadastro
         //O ideal é que seja preenchido por inputs do usuário
-        userCredentials.put("user3","password")
 
         // Configura o ouvinte do botão de login
         loginButton?.setOnClickListener {
@@ -48,13 +48,15 @@ class MainActivity : AppCompatActivity() {
 
             if (validateCredentials(username, password)) {
 
-            Toast.makeText(this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, SegundaTela::class.java)
+                startActivity(intent)
+
             } else {
                 userCredentials.put(username,password)
                 Toast.makeText(this, "Usuário cadastrado!", Toast.LENGTH_SHORT).show()
             }
         }
-
     }
 
     private fun validateCredentials(username: String, password: String): Boolean {
