@@ -1,26 +1,22 @@
 package com.example.cp1_mobile
 
-import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
-    private var inserteUser: EditText? = null
-    private var insertPassword: EditText? = null
-    private var loginButton: Button? = null
 
-    //Dicionário para armazenar usuários e senhas
-    private var userCredentials: HashMap<String, String> = hashMapOf(
-        "user1" to "password1",
-        "user2" to "password2",
-        // Adicione mais usuários e senhas conforme necessário
-    )
+    //classes
+
+    private var editTextNome: EditText? = null
+    private var editTextSobrenome: EditText? = null
+    private var editTextEmail: EditText? = null
+    private var editTextDataNascimento:  Button? = null
+    private var editTextPassword:  Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,33 +29,66 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        // Inicialize os campos de entrada e o botão
-        inserteUser = findViewById(R.id.inserteUser)
-        insertPassword = findViewById(R.id.insertPassword)
-        loginButton = findViewById(R.id.buttonLogin)
+        editTextNome = findViewById(R.id.insertName)
+        editTextSobrenome = findViewById(R.id.insertLastname)
+        editTextEmail = findViewById(R.id.insertEmail)
+        editTextDataNascimento = findViewById(R.id.insertNascimentoData)
+        /*
+        editTextDataNascimento = findViewById(R.id.insertPassword)
+        editTextPassword = findViewById(R.id.insertPassword)
 
-        //Exemplo de cadastro
-        //O ideal é que seja preenchido por inputs do usuário
+            // Coleta os valores dos campos
+            val nome = editTextNome.toString()
+            val lastName = editTextSobrenome.toString()
+            val sobrenome = editTextSobrenome.toString()
+            val email = editTextEmail.toString()
+            val password = editTextPassword.toString()
+            val dataNascimento = editTextDataNascimento.toString()
 
-        // Configura o ouvinte do botão de login
-        loginButton?.setOnClickListener {
-            val username = inserteUser?.text.toString()
-            val password = insertPassword?.text.toString()
+            // Formato da data
+            val formatoData = SimpleDateFormat("dd/MM/yyyy", Locale("pt", "BR"))
 
-            if (validateCredentials(username, password)) {
+            val dataNascimentoDate = formatoData.parse(dataNascimento)
 
-                Toast.makeText(this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show()
-                val intent = Intent(this, SegundaTela::class.java)
-                startActivity(intent)
+            // Cria a instância da classe CadastroUsuario
+            val usuario = userSingUp(
+                name = nome,
+                lastName = sobrenome,
+                email = email,
+                dataNascimento = dataNascimentoDate,
+                password = password
+            )
 
-            } else {
-                userCredentials.put(username,password)
-                Toast.makeText(this, "Usuário cadastrado!", Toast.LENGTH_SHORT).show()
-            }
+            // Exemplo de uso
+            Toast.makeText(this, "Usuário criado: ${usuario.name}", Toast.LENGTH_SHORT).show()
+
+            Inicialize os campos de entrada e o botão
+            inserteUser = findViewById(R.id.inserteUser)
+            insertPassword = findViewById(R.id.insertPassword)
+            loginButton = findViewById(R.id.buttonLogin)
+
+            //Exemplo de cadastro
+            //O ideal é que seja preenchido por inputs do usuário
+
+            // Configura o ouvinte do botão de login
+            loginButton?.setOnClickListener {
+                val username = inserteUser?.text.toString()
+                val password = insertPassword?.text.toString()
+
+                if (validateCredentials(username, password)) {
+
+                    Toast.makeText(this, "Login bem-sucedido!", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, SegundaTela::class.java)
+                    startActivity(intent)
+
+                } else {
+                    userCredentials.put(username,password)
+                    Toast.makeText(this, "Usuário cadastrado!", Toast.LENGTH_SHORT).show()
+                }*/
+
         }
     }
 
-    private fun validateCredentials(username: String, password: String): Boolean {
+    /*private fun validateCredentials(username: String, password: String): Boolean {
         return userCredentials[username] == password
-    }
-}
+    }*/
