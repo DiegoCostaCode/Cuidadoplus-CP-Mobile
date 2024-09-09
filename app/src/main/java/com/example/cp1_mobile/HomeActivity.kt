@@ -1,6 +1,9 @@
 package com.example.cp1_mobile
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat
 class HomeActivity : AppCompatActivity() {
 
     private var helloUserText: TextView? = null
+    private var emergencyButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,5 +31,17 @@ class HomeActivity : AppCompatActivity() {
         helloUserText = findViewById(R.id.helloUser)
 
         helloUserText?.setText("Olá, $userName")
+
+        emergencyButton = findViewById(R.id.emergencyButton)
+        emergencyButton?.setOnClickListener {
+            val intent = Intent(Intent.ACTION_DIAL)
+            intent.data = Uri.parse("tel:192")
+            startActivity(intent)
     }
+
+
+
+
+
+}
 }
