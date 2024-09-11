@@ -3,8 +3,7 @@
     <item>
         <shape android:shape="rectangle">
             <!-- Cor de fundo do botão -->
-            <solid android:color="#FF6A00"/>
-            <!-- Borda arredondada -->
+            <solid android:color="#FF6A00"/>            <!-- Borda arredondada -->
             <corners android:radius="16dp"/>
         </shape>
     </item>
