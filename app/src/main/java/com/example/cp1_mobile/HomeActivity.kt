@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -12,8 +13,24 @@ import androidx.core.view.WindowInsetsCompat
 
 class HomeActivity : AppCompatActivity() {
 
-    private var helloUserText: TextView? = null
+    private var title: TextView? = null
     private var emergencyButton: Button? = null
+    private var homeNav: ImageButton? = null
+    private var medNav: ImageButton? = null
+    private var userNav: ImageButton? = null
+
+    fun navigationMenu() {
+        homeNav = findViewById(R.id.homeNav)
+        medNav = findViewById(R.id.medNav)
+        userNav = findViewById(R.id.userNav)
+
+        homeNav?.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
+        }
+        medNav?.setOnClickListener {
+            startActivity(Intent(this, MedicineActivity::class.java))
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,22 +43,19 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
 
+        navigationMenu()
+
         val userName = intent.getStringExtra("name")
 
-        helloUserText = findViewById(R.id.helloUser)
-
-        helloUserText?.setText("Olá, $userName")
+        title = findViewById(R.id.title)
+        title?.text = "Olá, $userName"
 
         emergencyButton = findViewById(R.id.emergencyButton)
         emergencyButton?.setOnClickListener {
             val intent = Intent(Intent.ACTION_DIAL)
             intent.data = Uri.parse("tel:192")
             startActivity(intent)
+        }
+
     }
-
-
-
-
-
-}
 }
