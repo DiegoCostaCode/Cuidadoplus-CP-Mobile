@@ -4,23 +4,33 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.cp1_mobile.Model.Medicine
 
 class HomeActivity : AppCompatActivity() {
 
-    private var helloUserText: TextView? = null
+    private var title: TextView? = null
     private var emergencyButton: Button? = null
-    private lateinit var medicinesRecyclerView: RecyclerView
-    private lateinit var addMedicineButton: Button
-    private val medicines = mutableListOf<Medicine>()
-    private lateinit var medicineAdapter: MedicineAdapter
+    private var homeNav: ImageButton? = null
+    private var medNav: ImageButton? = null
+    private var userNav: ImageButton? = null
+
+    fun navigationMenu() {
+        homeNav = findViewById(R.id.homeNav)
+        medNav = findViewById(R.id.medNav)
+        userNav = findViewById(R.id.userNav)
+
+        homeNav?.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
+        }
+        medNav?.setOnClickListener {
+            startActivity(Intent(this, MedicineActivity::class.java))
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,10 +43,12 @@ class HomeActivity : AppCompatActivity() {
             insets
         }
 
+        navigationMenu()
+
         val userName = intent.getStringExtra("name")
 
-        helloUserText = findViewById(R.id.helloUser)
-        helloUserText?.text = "Olá, $userName"
+        title = findViewById(R.id.title)
+        title?.text = "Olá, $userName"
 
         emergencyButton = findViewById(R.id.emergencyButton)
         emergencyButton?.setOnClickListener {
@@ -45,16 +57,5 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        medicinesRecyclerView = findViewById(R.id.medicinesRecyclerView)
-        medicinesRecyclerView.layoutManager = LinearLayoutManager(this)
-        medicineAdapter = MedicineAdapter(medicines)
-        medicinesRecyclerView.adapter = medicineAdapter
-
-        addMedicineButton = findViewById(R.id.addMedicineButton)
-        addMedicineButton.setOnClickListener {
-            val newMedicine = Medicine("Paracetamol", "08:00 AM")
-            medicines.add(newMedicine)
-            medicineAdapter.notifyDataSetChanged()
-        }
     }
 }
