@@ -1,6 +1,4 @@
-package com.example.cp1_mobile.Model
-
-import java.util.Date
+package com.example.cp1_mobile.model
 
 class userSingUp(
     var name: String,

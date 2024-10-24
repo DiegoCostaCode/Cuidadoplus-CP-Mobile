@@ -10,7 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.cp1_mobile.Model.userSingUp
+import com.example.cp1_mobile.model.userSingUp
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale

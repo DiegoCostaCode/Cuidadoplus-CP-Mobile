@@ -1,4 +1,4 @@
-package com.example.cp1_mobile.Model
+package com.example.cp1_mobile.model
 
 data class Medicine(
     val name: String,

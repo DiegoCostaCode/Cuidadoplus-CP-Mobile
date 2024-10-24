@@ -1,6 +1,5 @@
 package com.example.cp1_mobile
 
-import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.graphics.Color
@@ -18,9 +17,8 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.cp1_mobile.Model.Medicine
+import com.example.cp1_mobile.model.Medicine
 import java.text.SimpleDateFormat
-import java.util.Locale
 
 class MedicineActivity : AppCompatActivity() {
 
